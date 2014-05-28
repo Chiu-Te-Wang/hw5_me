@@ -78,9 +78,6 @@ app.get('/result', function(req, res){
   //
   delete req.session.vote;
   req.logout(); // Delete req.user
-  res.render('result', {
-         votes: [18.1, 12.5, 42.44445, 21.3, 1.3, 2.5, 1.85555] // Percentages
-       });
 
   // Redirect the malicious (not voted or not logged in) requests.
   //
@@ -105,9 +102,9 @@ app.get('/result', function(req, res){
   //
   //   ... ...
   //
-       // res.render('result', {
-       //   votes: [18.1, 12.5, 42.44445, 21.3, 1.3, 2.5, 1.85555] // Percentages
-       // });
+       res.render('result', {
+         votes: [18.1, 12.5, 42.44445, 21.3, 1.3, 2.5, 1.85555] // Percentages
+       });
   
   });
 
