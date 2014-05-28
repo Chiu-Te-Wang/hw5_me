@@ -10,8 +10,8 @@ var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-// require('./config/db'); // TODO [DB] : Connect to database
- require('./config/passport'); // TODO [FB] : Passport configuration
+require('./config/db'); // TODO [DB] : Connect to database
+require('./config/passport'); // TODO [FB] : Passport configuration
 
 var app = express();
 // var Vote = mongoose.model('Vote'); // TODO [DB] : Get Vote model
@@ -94,12 +94,12 @@ app.get('/result', function(req, res){
   */
 
   //
-  // var vote = new Vote({vote: vote, fbid: fbid});
-  // vote.save(function(err, newVote){
-  //   if( err ){
-  //     req.flash('info', "你已經投過票囉！");
-  //     return res.redirect('/');
-  //   }
+  var vote = new Vote({vote: vote, fbid: fbid});
+  vote.save(function(err, newVote){
+    if( err ){
+      req.flash('info', "你已經投過票囉！");
+      return res.redirect('/');
+    }
   //
   //   ... ...
   //
