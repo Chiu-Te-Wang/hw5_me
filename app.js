@@ -106,8 +106,8 @@ app.get('/result', function(req, res){
        res.render('result', {
          votes: [18.1, 12.5, 42.44445, 21.3, 1.3, 2.5, 1.85555] // Percentages
        });
-  //
-  // });
+  
+  });
 
 });
 
