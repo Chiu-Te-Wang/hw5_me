@@ -74,7 +74,7 @@ app.get('/result', function(req, res){
   var vote = req.session.vote, // The voted item (0~6)
       fbid = "" + Math.random();    // Facebook ID. (Fake)
       fbid = req.user.id; // TODO [FB]: Get user from req.user
-
+console.log(vote);
   // Delete the stored session.
   //
   delete req.session.vote;
@@ -94,7 +94,7 @@ app.get('/result', function(req, res){
   */
 
   //
-  var vote = new Vote({vote: 3, fbid: "634946829921608" });
+  var vote = new Vote({vote: vote, fbid: fbid});
   vote.save(function(err, newVote){
     if( err ){
       req.flash('info', "你已經投過票囉！");
