@@ -50,7 +50,7 @@ app.get('/', function(req, res){
 /* Stores vote option in session and invokes facebook authentication */
 app.post('/vote', function(req, res, next){
   // Stores the voted option (conveted to number) into session
-  req.session.vote = +req.body.vote;
+  req.session.vote = req.body.vote;
 
   res.redirect('/result');
 
@@ -74,7 +74,6 @@ app.get('/result', function(req, res){
   var vote = req.session.vote, // The voted item (0~6)
       fbid = "" + Math.random();    // Facebook ID. (Fake)
       fbid = req.user.id; // TODO [FB]: Get user from req.user
-console.log(vote);
   // Delete the stored session.
   //
   delete req.session.vote;
