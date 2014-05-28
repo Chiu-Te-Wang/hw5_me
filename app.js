@@ -14,7 +14,7 @@ require('./config/db'); // TODO [DB] : Connect to database
 require('./config/passport'); // TODO [FB] : Passport configuration
 
 var app = express();
-// var Vote = mongoose.model('Vote'); // TODO [DB] : Get Vote model
+var Vote = mongoose.model('Vote'); // TODO [DB] : Get Vote model
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -94,7 +94,7 @@ app.get('/result', function(req, res){
   */
 
   //
-  var vote = new Vote({vote: 3, fbid: req.session.fbid});
+  var vote = new vote({vote: req.session.vote, fbid: req.session.fbid});
   vote.save(function(err, newVote){
     if( err ){
       req.flash('info', "你已經投過票囉！");
