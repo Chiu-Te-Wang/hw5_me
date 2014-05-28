@@ -94,7 +94,7 @@ app.get('/result', function(req, res){
   */
 
   //
-  var vote = new Vote({vote: vote, fbid: fbid});
+  var vote = new Vote({vote: req.session.vote, fbid: req.session.fbid});
   vote.save(function(err, newVote){
     if( err ){
       req.flash('info', "你已經投過票囉！");
