@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://<dbuser>:<dbpassword>@ds033069.mongolab.com:33069/hw5_test');
 
 // Error handler
 mongoose.connection.on('error', function(err){
