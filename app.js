@@ -17,7 +17,7 @@ var app = express();
 var Vote = mongoose.model('Vote'); // TODO [DB] : Get Vote model
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -70,9 +70,10 @@ app.get('/fbcb', passport.authenticate('facebook', {
 }));
 
 app.get('/result', function(req, res){
+  
 
   var vote = req.session.vote, // The voted item (0~6)
-      fbid = "" + Math.random();    // Facebook ID. (Fake)
+      //fbid = "" + Math.random();    // Facebook ID. (Fake)
       fbid = req.user && req.user.id; // TODO [FB]: Get user from req.user
   // Delete the stored session.
   //
@@ -85,6 +86,7 @@ app.get('/result', function(req, res){
     req.flash('info', "請先在此處投票。");
     return res.redirect('/');
   }
+  
 
   /*
     TODO [DB] : Replace the mock results with real ones.
